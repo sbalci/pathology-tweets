@@ -33,7 +33,10 @@ Imports:
     quarto,
     fs,
     knitr,
-    tinytex
-Remotes:
-    ropensci/tidytags
-    
+    tinytex,
+    dplyr,
+    httpuv,
+    googlesheets4,
+    tidytags,
+    glue
+

@@ -1,15 +1,19 @@
 project:
   type: website
+  output-dir: docs
+  resources:
+    - "pages"
 
 website:
-  title: "PT"
+  title: "Pathology Tweets"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - giris.qmd
-      - about.qmd
-      - currentTweets.qmd
+      - text: List of Pages
+        href: list.qmd
+      - text: About and Development
+        href: about.qmd
 
 format:
   html:

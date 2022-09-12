@@ -8,7 +8,7 @@ if (!requireNamespace("tidytags", quietly = TRUE)) {
 }
 library("tidytags")
 library("magrittr")
-library("dplyr")
+library("dplyr", quietly = TRUE, warn.conflicts = FALSE)
 library("googlesheets4")
 
 
@@ -19,12 +19,12 @@ library("googlesheets4")
 
 # tidytags::read_tags(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
 
-googlesheets4::gs4_get(ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
+googlesheets4::gs4_get(ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",)
 
 currentTweets <- googlesheets4::range_read(
   ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
   sheet = "Archive",
-range = "A1:R100"
+range = "A1:R101"
 )
 
 # {{< tweet serdarbalci 1269671183114526722 >}}
@@ -72,7 +72,7 @@ currentTweetsText <- paste0(
 )
 
 currentTweets_qmd <- paste0(
-  "./currentTweets",
+  "./_htmls/currentTweets",
   justNowTimeStamp,
   ".qmd")
 
@@ -82,7 +82,7 @@ writeLines(
 )
 
 currentTweets_html <- paste0(
-  "./htmls/currentTweets",
+  "./_htmls/currentTweets",
   justNowTimeStamp,
   ".html")
 
@@ -91,5 +91,65 @@ quarto::quarto_render(input = currentTweets_qmd,
                       output_file = currentTweets_html,
                       use_freezer = TRUE,
                       cache = TRUE,
+                      debug = TRUE
                       )
+
+# file.exists(paste0("./docs/_htmls/currentTweets",justNowTimeStamp, ".html"))
+
+# list.files(path = "./docs/_htmls/", pattern = "*.html", full.names = TRUE)
+
+html_files <- list.files(path = "./_htmls/", pattern = "*.html", full.names = TRUE)
+
+
+fs::file_move(path = html_files, new_path = "./pages/")
+
+
+
+list_of_pages <- list.files("./pages/", full.names = FALSE)
+
+list_of_pages_fullnames <- list.files("./pages/", full.names = TRUE)
+
+
+df_list_of_pages <-cbind(pages = list_of_pages,
+                         links = list_of_pages_fullnames)
+
+df_list_of_pages <- as.data.frame(df_list_of_pages)
+
+
+df_list_of_pages <-df_list_of_pages %>%
+dplyr::mutate(
+  link_text = glue::glue("<a href='{links}'>{pages}</a>")
+)
+
+
+
+
+list_of_pages_text <- paste0(
+  df_list_of_pages$link_text,
+  "\n\n\n","---", "\n\n\n",
+  collapse = "\n"
+)
+
+
+
+
+
+list_of_pages_text <- paste0(
+  "---", "\n",
+  "title: List of Pages ", " \n",
+  "---", "\n",
+  "\n\n",
+  list_of_pages_text,
+  collapse = "\n"
+)
+
+
+writeLines(
+  text = list_of_pages_text,
+  con = "./list.qmd"
+)
+
+
+
+quarto::quarto_render(".", as_job = FALSE)
 
