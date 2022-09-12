@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "giris.html",
+    "href": "giris.html",
+    "title": "Giris",
+    "section": "",
+    "text": "https://github.com/ropensci/tidytags"
+  },
+  {
+    "objectID": "giris.html#quarto",
+    "href": "giris.html#quarto",
+    "title": "Giris",
+    "section": "Quarto",
+    "text": "Quarto\n\nhttps://quarto.org/\n\n\nQuarto Extensions\n\nhttps://github.com/quarto-ext/\nhttps://github.com/sellorm/quarto-twitter-embed\n\nquarto install extension sellorm/quarto-twitter-embed\nquarto list extensions"
+  },
+  {
+    "objectID": "giris.html#tags",
+    "href": "giris.html#tags",
+    "title": "Giris",
+    "section": "TAGS",
+    "text": "TAGS\n\nhttps://tags.hawksey.info/get-tags/\nhttps://drive.google.com/drive/folders/1tAQ3yWgpV6Syg6p-Ns4E0VHHf16kgirT"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PT",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  }
+]
