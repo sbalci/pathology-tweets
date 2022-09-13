@@ -213,9 +213,10 @@ gitCommand <-
         sep = ''
   )
 
+
 tryCatch({
-  shell(
-    cmd = gitCommand,
+  system(
+    command = gitCommand,
     intern = TRUE,
     wait = TRUE
   )
