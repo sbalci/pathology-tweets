@@ -140,7 +140,7 @@ fs::file_move(path = html_files, new_path = "./pages/")
 
 list_of_pages <- list.files("./pages/", full.names = FALSE)
 
-list_of_pages_fullnames <- list.files("./pages/", full.names = TRUE)
+list_of_pages_fullnames <- list.files("./pages", full.names = TRUE)
 
 
 df_list_of_pages <-cbind(pages = list_of_pages,
