@@ -154,7 +154,6 @@ writeLines(
 )
 
 
-
 quarto::quarto_render(".", as_job = FALSE)
 
 
