@@ -1,20 +1,21 @@
-if (!requireNamespace("tidytags", quietly = TRUE)) {
-  install.packages(
-    "tidytags",
-    dependencies = TRUE,
-    quiet = TRUE,
-    verbose = FALSE
-  )
-}
+# if (!requireNamespace("tidytags", quietly = TRUE)) {
+#   install.packages(
+#     "tidytags",
+#     dependencies = TRUE,
+#     quiet = TRUE,
+#     verbose = FALSE
+#   )
+# }
+#
+# if (!requireNamespace("tidytags", quietly = TRUE)) {
+# install.packages("tidytags", repos = "https://ropensci.r-universe.dev", ,
+#                  dependencies = TRUE,
+#                  quiet = TRUE,
+#                  verbose = FALSE)
+# }
+#
+# library("tidytags")
 
-if (!requireNamespace("tidytags", quietly = TRUE)) {
-install.packages("tidytags", repos = "https://ropensci.r-universe.dev", ,
-                 dependencies = TRUE,
-                 quiet = TRUE,
-                 verbose = FALSE)
-}
-
-library("tidytags")
 library("magrittr")
 library("dplyr", quietly = TRUE, warn.conflicts = FALSE)
 library("googlesheets4")
@@ -202,17 +203,20 @@ CommitMessage <-
 setorigin <-
   "git remote set-url origin git@github.com:sbalci/pathology-tweets &&"
 
+
+
+if(Sys.info()[["sysname"]] == "Darwin") {
+
 gitCommand <-
   paste('cd ',
         knitroot,
         ' && git add . && git commit --message "',
         CommitMessage, '"',
-        # '" && ',
-        # setorigin,
-        # ' git push origin main ',
+         ' && ',
+         setorigin,
+         ' git push origin main ',
         sep = ''
   )
-
 
 tryCatch({
   system(
@@ -229,4 +233,7 @@ error = function(error_message) {
   return(NA)
 }
 )
+
+}
+
 
