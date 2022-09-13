@@ -17,15 +17,19 @@ library("googlesheets4")
 # https://docs.google.com/spreadsheets/d/1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A/edit?usp=sharing
 
 
-# tidytags::read_tags(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
+# currentTweetsAll <- tidytags::read_tags(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
 
-googlesheets4::gs4_get(ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",)
+googlesheets4::gs4_get(ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
+
+
 
 currentTweets <- googlesheets4::range_read(
   ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
   sheet = "Archive",
 range = "A1:R101"
 )
+
+
 
 # {{< tweet serdarbalci 1269671183114526722 >}}
 

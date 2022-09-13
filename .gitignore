@@ -28,10 +28,11 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 # pkgdown site
- docs/
+docs/
 # translation temp files
 po/*~
 # RStudio Connect folder
 rsconnect/
 /.quarto/
 _oldcodes
+TAGS v6.1.9.1 pathology - Archive.csv
