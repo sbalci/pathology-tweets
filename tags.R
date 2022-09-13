@@ -157,3 +157,40 @@ writeLines(
 
 quarto::quarto_render(".", as_job = FALSE)
 
+
+knitroot <- here::here(fs::path_home(), "Documents/GitHub/pathology-tweets")
+
+
+CommitMessage <-
+  paste("updated at: ", Sys.time(), sep = "")
+
+setorigin <-
+  "git remote set-url origin git@github.com:sbalci/pathology-tweets &&"
+
+gitCommand <-
+  paste('cd ',
+        knitroot,
+        ' && git add . && git commit --message "',
+        CommitMessage,
+        '" && ',
+        setorigin,
+        ' git push origin main ',
+        sep = ''
+  )
+
+tryCatch({
+  shell(
+    cmd = gitCommand,
+    intern = TRUE,
+    wait = TRUE
+  )
+
+},
+error = function(error_message) {
+  message("sbalci/pathology-tweets update")
+  message(error_message)
+  message("\n")
+  return(NA)
+}
+)
+
