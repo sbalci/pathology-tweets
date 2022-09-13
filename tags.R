@@ -60,6 +60,9 @@ currentTweets <-
     id_str
   )
 
+currentTweets <- sample_n(tbl = currentTweets, size = 10, replace = FALSE)
+
+
 currentTweets <-
   currentTweets %>%
   dplyr::mutate(
@@ -71,7 +74,6 @@ currentTweets <-
     )
   )
 
-currentTweets <- sample_n(currentTweets, 10)
 
 justNowTimeStamp <- gsub(
   pattern = "-|:| ",
