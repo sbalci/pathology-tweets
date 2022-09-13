@@ -6,6 +6,14 @@ if (!requireNamespace("tidytags", quietly = TRUE)) {
     verbose = FALSE
   )
 }
+
+if (!requireNamespace("tidytags", quietly = TRUE)) {
+install.packages("tidytags", repos = "https://ropensci.r-universe.dev", ,
+                 dependencies = TRUE,
+                 quiet = TRUE,
+                 verbose = FALSE)
+}
+
 library("tidytags")
 library("magrittr")
 library("dplyr", quietly = TRUE, warn.conflicts = FALSE)
@@ -33,7 +41,7 @@ library("googlesheets4")
 
 
 
-currentTweets <- googlesheets4::range_read(
+currentTweetsAll <- googlesheets4::range_read(
   ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
   sheet = "Archive",
 range = "A1:R101"
@@ -45,7 +53,7 @@ range = "A1:R101"
 
 
 currentTweets <-
-  currentTweets %>%
+  currentTweetsAll %>%
   dplyr::select(
     from_user,
     id_str
@@ -78,7 +86,7 @@ currentTweetsText <- paste0(
 
 currentTweetsText <- paste0(
   "---", "\n",
-  "title: Pathology Tweets ", justNowTimeStamp, " \n",
+  "title: 'Pathology Tweets ", justNowTimeStamp, "' \n",
   "---", "\n",
   "\n\n",
   currentTweetsText,
@@ -100,12 +108,22 @@ currentTweets_html <- paste0(
   justNowTimeStamp,
   ".html")
 
+
+# quarto::quarto_render(input = "currentTweets20220914005302.qmd",
+#                       output_format = "html",
+#                       output_file = currentTweets_html,
+#                       execute_dir = here::here(),
+#                       cache = TRUE,
+#                       debug = TRUE,
+#                       as_job = FALSE
+#                       )
+
 quarto::quarto_render(input = currentTweets_qmd,
                       output_format = "html",
                       output_file = currentTweets_html,
-                      use_freezer = TRUE,
                       cache = TRUE,
-                      debug = TRUE
+                      debug = TRUE,
+                      as_job = FALSE
                       )
 
 # file.exists(paste0("./docs/_htmls/currentTweets",justNowTimeStamp, ".html"))
@@ -164,8 +182,16 @@ writeLines(
 )
 
 
-quarto::quarto_render(".", as_job = FALSE)
 
+html_extra_files <- list.files(path = "./_htmls/", pattern = "*_files", full.names = TRUE)
+
+fs::dir_delete(html_extra_files)
+
+md_files <- list.files(path = "./_htmls/", pattern = "*.md|*qmd", full.names = TRUE)
+
+fs::file_delete(md_files)
+
+quarto::quarto_render(".", as_job = FALSE)
 
 knitroot <- here::here(fs::path_home(), "Documents/GitHub/pathology-tweets")
 
