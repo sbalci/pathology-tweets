@@ -19,7 +19,7 @@ library("googlesheets4")
 
 # currentTweetsAll <- tidytags::read_tags(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
 
-googlesheets4::gs4_get(ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
+# googlesheets4::gs4_get(ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
 
 
 
@@ -174,6 +174,8 @@ gitCommand <-
         CommitMessage,
         '" && ',
         setorigin,
+'git config user.name "sbalci"',
+'$ git config user.email "drserdarbalci@gmail.com"',
         ' git push origin main ',
         sep = ''
   )
