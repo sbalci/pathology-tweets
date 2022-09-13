@@ -23,6 +23,16 @@ library("googlesheets4")
 
 
 
+# library(googledrive)
+# library(googlesheets4)
+# # Google sheets authentification -----------------------------------------------
+# options(gargle_oauth_cache = ".secrets")
+# drive_auth(cache = ".secrets", email = "XXXX@gmail.com")
+# gs4_auth(token = drive_token())
+
+
+
+
 currentTweets <- googlesheets4::range_read(
   ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
   sheet = "Archive",
@@ -170,12 +180,10 @@ gitCommand <-
   paste('cd ',
         knitroot,
         ' && git add . && git commit --message "',
-        CommitMessage,
-        '" && ',
-        setorigin,
-'git config user.name "sbalci"',
-'$ git config user.email "drserdarbalci@gmail.com"',
-        ' git push origin main ',
+        CommitMessage, '"',
+        # '" && ',
+        # setorigin,
+        # ' git push origin main ',
         sep = ''
   )
 
