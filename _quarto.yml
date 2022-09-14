@@ -4,6 +4,9 @@ project:
   resources:
     - "pages"
 
+execute:
+  freeze: auto
+
 website:
   title: "Pathology Tweets"
   navbar:

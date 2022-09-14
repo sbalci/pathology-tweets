@@ -36,7 +36,7 @@ library("googlesheets4")
 # library(googlesheets4)
 # # Google sheets authentification -----------------------------------------------
 # options(gargle_oauth_cache = ".secrets")
-# drive_auth(cache = ".secrets", email = "XXXX@gmail.com")
+# drive_auth(cache = ".secrets", email = "drserdarbalci@gmail.com")
 # gs4_auth(token = drive_token())
 
 
@@ -48,7 +48,7 @@ currentTweetsAll <- googlesheets4::range_read(
 range = "A1:R101"
 )
 
-
+saveRDS(object = currentTweetsAll, file = "currentTweetsAll.RDS")
 
 # {{< tweet serdarbalci 1269671183114526722 >}}
 
@@ -207,18 +207,20 @@ setorigin <-
 
 
 
-if(Sys.info()[["sysname"]] == "Darwin") {
-
 gitCommand <-
   paste('cd ',
         knitroot,
         ' && git add . && git commit --message "',
         CommitMessage, '"',
-         ' && ',
-         setorigin,
-         ' git push origin main ',
+        ' && ',
+        setorigin,
+        ' git push origin main ',
         sep = ''
   )
+
+
+if(Sys.info()[["sysname"]] == "Darwin") {
+
 
 tryCatch({
   system(
@@ -238,4 +240,17 @@ error = function(error_message) {
 
 }
 
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
 
+rstudioapi::terminalSend(
+  myTerm,
+  paste0(gitCommand, "\n")
+)
+
+repeat {
+  Sys.sleep(0.1)
+  if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+    print("Code Executed")
+    break
+  }
+}
