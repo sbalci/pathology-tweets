@@ -1,19 +1,19 @@
-name: gsheet.action test
+name: gsheet.action
 on: push
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - id: 'update_worksheet'
+      - id: 'get data from worksheet'
         uses: jroehl/gsheet.action@v1.0.0 # you can specify '@release' to always have the latest changes
         with:
-          spreadsheetId: <spreadsheetId>
+          spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
           commands: | # list of commands, specified as a valid JSON string
             [
-              { "command": "addWorksheet", "args": { "worksheetTitle": "<worksheetTitle>" }},
-              { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }},
-              { "command": "getData", "args": { "range": "'<worksheetTitle>'!A2:B3" } }
+              # { "command": "addWorksheet", "args": { "worksheetTitle": "<worksheetTitle>" }},
+              # { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }},
+              { "command": "getData", "args": { "range": "'Archive'!A1:R101" } }
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
