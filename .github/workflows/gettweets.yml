@@ -1,4 +1,4 @@
-name: gsheet.action
+name: gsheet
 on:
   push:
   workflow_dispatch:
@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: 'get_data_from_worksheet'
-        uses: jroehl/gsheet.action@release
+        uses: jroehl/gsheet.action
         with:
-          spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
+          spreadsheetId: 'om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
           commands: |
             [
               { "command": "getData", "args": { "range": "Archive!A1:R101" } }
