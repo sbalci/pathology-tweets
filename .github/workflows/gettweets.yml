@@ -13,7 +13,7 @@ jobs:
           spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
           commands: | # list of commands, specified as a valid JSON string
             [
-              { "command": "getData", "args": { "range": "'Archive'!A1:R101" } }
+              { "command": "getData", "args": { "range": "Archive!A1:R101" } }
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
