@@ -11,14 +11,14 @@ jobs:
         uses: jroehl/gsheet.action@release
         with:
           spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
-          commands: | # list of commands, specified as a valid JSON string
+          commands: |
             [
               { "command": "getData", "args": { "range": "Archive!A1:R101" } }
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
-      - name: dump results
+      - name: results
         env:
           #  the output of the action can be found in ${{ steps.update_worksheet.outputs.results }}
           RESULTS: ${{ steps.update_worksheet.outputs.results }}
