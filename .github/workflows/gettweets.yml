@@ -13,8 +13,6 @@ jobs:
           spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
           commands: | # list of commands, specified as a valid JSON string
             [
-              # { "command": "addWorksheet", "args": { "worksheetTitle": "<worksheetTitle>" }},
-              # { "command": "updateData", "args": { "data": [["A1", "A2", "A3"]] }},
               { "command": "getData", "args": { "range": "'Archive'!A1:R101" } }
             ]
         env:
