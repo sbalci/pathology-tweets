@@ -10,14 +10,14 @@ jobs:
       - id: 'get_data_from_worksheet'
         uses: jroehl/gsheet.action@v1.2.0
         with:
-          spreadsheetId: 'om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
+          spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
           commands: |
             [
               { "command": "getData", "args": { "range": "Archive!A1:R101" } }
             ]
         env:
-          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+#          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+#          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
       - name: results
         env:
           #  the output of the action can be found in ${{ steps.update_worksheet.outputs.results }}
