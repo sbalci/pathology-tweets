@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: 'get_data_from_worksheet'
-        uses: jroehl/gsheet.action@v1.0.0 # you can specify '@release' to always have the latest changes
+        uses: jroehl/gsheet.action@release
         with:
           spreadsheetId: '1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A'
           commands: | # list of commands, specified as a valid JSON string
