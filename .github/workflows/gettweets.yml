@@ -15,10 +15,10 @@ jobs:
             [
               { "command": "getData", "args": { "range": "Archive!A1:R101" } }
             ]
-        env:
-          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-          GSHEET_PRIVATE_KEY: "tamtam"
-#          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+#
+        # env:
+        #   GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+        #   GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
       - name: results
         env:
           #  the output of the action can be found in ${{ steps.update_worksheet.outputs.results }}
