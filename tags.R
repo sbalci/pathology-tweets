@@ -67,7 +67,7 @@ currentTweets <-
     id_str
   )
 
-currentTweets <- sample_n(tbl = currentTweets, size = 10, replace = FALSE)
+currentTweets <- dplyr::sample_n(tbl = currentTweets, size = 10, replace = FALSE)
 
 
 currentTweets <-
@@ -203,49 +203,52 @@ fs::file_delete(md_files)
 
 quarto::quarto_render(".", as_job = FALSE)
 
-knitroot <- here::here(fs::path_home(), "Documents/GitHub/pathology-tweets")
-
-
-CommitMessage <-
-  paste("updated at: ", Sys.time(), sep = "")
-
-setorigin <-
-  "git remote set-url origin git@github.com:sbalci/pathology-tweets &&"
 
 
 
-gitCommand <-
-  paste('cd ',
-        knitroot,
-        ' && git add . && git commit --message "',
-        CommitMessage, '"',
-        ' && ',
-        setorigin,
-        ' git push origin main ',
-        sep = ''
-  )
-
-
-if(Sys.info()[["sysname"]] == "Darwin") {
-
-
-tryCatch({
-  system(
-    command = gitCommand,
-    intern = TRUE,
-    wait = TRUE
-  )
-
-},
-error = function(error_message) {
-  message("sbalci/pathology-tweets update")
-  message(error_message)
-  message("\n")
-  return(NA)
-}
-)
-
-}
+# knitroot <- here::here(fs::path_home(), "Documents/GitHub/pathology-tweets")
+#
+#
+# CommitMessage <-
+#   paste("updated at: ", Sys.time(), sep = "")
+#
+# setorigin <-
+#   "git remote set-url origin git@github.com:sbalci/pathology-tweets &&"
+#
+#
+#
+# gitCommand <-
+#   paste('cd ',
+#         knitroot,
+#         ' && git add . && git commit --message "',
+#         CommitMessage, '"',
+#         ' && ',
+#         setorigin,
+#         ' git push origin main ',
+#         sep = ''
+#   )
+#
+#
+# if(Sys.info()[["sysname"]] == "Darwin") {
+#
+#
+# tryCatch({
+#   system(
+#     command = gitCommand,
+#     intern = TRUE,
+#     wait = TRUE
+#   )
+#
+# },
+# error = function(error_message) {
+#   message("sbalci/pathology-tweets update")
+#   message(error_message)
+#   message("\n")
+#   return(NA)
+# }
+# )
+#
+# }
 
 
 
