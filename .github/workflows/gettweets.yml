@@ -1,6 +1,6 @@
 name: gsheet
 on:
-  push:
+#  push:
   workflow_dispatch:
 
 jobs:
