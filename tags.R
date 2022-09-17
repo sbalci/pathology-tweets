@@ -40,15 +40,22 @@ library("googlesheets4")
 # gs4_auth(token = drive_token())
 
 
+read_tags2 <-
+  function(tags_id) {
+    googlesheets4::gs4_deauth()
+    tweet_sheet <- googlesheets4::range_read(tags_id, sheet = 2, range = "A1:R101")
+    tweet_sheet
+  }
 
+currentTweetsAll <- read_tags2(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
 
-currentTweetsAll <- googlesheets4::range_read(
-  ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
-  sheet = "Archive",
-range = "A1:R101"
-)
+# currentTweetsAll <- googlesheets4::range_read(
+#   ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
+#   sheet = "Archive",
+# range = "A1:R101"
+# )
 
-saveRDS(object = currentTweetsAll, file = "currentTweetsAll.RDS")
+# saveRDS(object = currentTweetsAll, file = "currentTweetsAll.RDS")
 
 # {{< tweet serdarbalci 1269671183114526722 >}}
 
@@ -240,17 +247,21 @@ error = function(error_message) {
 
 }
 
-myTerm <- rstudioapi::terminalCreate(show = FALSE)
 
-rstudioapi::terminalSend(
-  myTerm,
-  paste0(gitCommand, "\n")
-)
 
-repeat {
-  Sys.sleep(0.1)
-  if (rstudioapi::terminalBusy(myTerm) == FALSE) {
-    print("Code Executed")
-    break
-  }
-}
+# myTerm <- rstudioapi::terminalCreate(show = FALSE)
+#
+# rstudioapi::terminalSend(
+#   myTerm,
+#   paste0(gitCommand, "\n")
+# )
+#
+# repeat {
+#   Sys.sleep(0.1)
+#   if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+#     print("Code Executed")
+#     break
+#   }
+# }
+
+
