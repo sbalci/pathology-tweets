@@ -43,7 +43,7 @@ library("googlesheets4")
 read_tags2 <-
   function(tags_id) {
     googlesheets4::gs4_deauth()
-    tweet_sheet <- googlesheets4::range_read(tags_id, sheet = 2, range = "A1:R101")
+    tweet_sheet <- googlesheets4::range_read(tags_id, sheet = 2, range = "A1:R501")
     tweet_sheet
   }
 

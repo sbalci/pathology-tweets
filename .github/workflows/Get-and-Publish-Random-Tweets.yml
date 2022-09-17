@@ -10,7 +10,7 @@ jobs:
 
 
 
-  quarto-render-and-deploy:
+  get-and-publish-random-tweets:
     if: "!contains(github.event.head_commit.message, 'WIP')"
     runs-on: ubuntu-latest
     continue-on-error: true
