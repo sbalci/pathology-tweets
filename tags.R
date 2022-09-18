@@ -41,13 +41,29 @@ library("googlesheets4")
 
 
 read_tags2 <-
-  function(tags_id) {
+  function(tags_id, sheet = 2, myrange = "A1:C501") {
     googlesheets4::gs4_deauth()
-    tweet_sheet <- googlesheets4::range_read(tags_id, sheet = 2, range = "A1:R501")
+    tweet_sheet <- googlesheets4::range_read(ss = tags_id, sheet = sheet, range = myrange)
     tweet_sheet
   }
 
-currentTweetsAll <- read_tags2(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
+
+# https://docs.google.com/spreadsheets/d/1GMaLFpxDjzYkAYI27d77h0l3qtV_PTbOAcph-QM-Q5g/edit?usp=sharing
+
+
+currentTweets_ImportTAGSPathology <- read_tags2(
+  tags_id = "1GMaLFpxDjzYkAYI27d77h0l3qtV_PTbOAcph-QM-Q5g",
+  sheet = "ImportTAGSPathology")
+
+currentTweets_selected <- read_tags2(
+  tags_id = "1GMaLFpxDjzYkAYI27d77h0l3qtV_PTbOAcph-QM-Q5g",
+  sheet = "selected")
+
+
+# https://docs.google.com/spreadsheets/d/e/2PACX-1vRk-FT0J0eydRoEkxDGDGqdezHg278qoIX-pNC4LtJdpQqF1RC9T45a-UIfZM-0yO_5SEjTOF6u_R-o/pubhtml
+
+
+# currentTweetsAll <- read_tags2(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A")
 
 # currentTweetsAll <- googlesheets4::range_read(
 #   ss = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF_-f74A",
@@ -58,6 +74,16 @@ currentTweetsAll <- read_tags2(tags_id = "1om6T_FqSoBbWDn30R2i4tP-KrS_N05tlQ-YFF
 # saveRDS(object = currentTweetsAll, file = "currentTweetsAll.RDS")
 
 # {{< tweet serdarbalci 1269671183114526722 >}}
+
+
+currentTweetsAll <- rbind(
+  currentTweets_ImportTAGSPathology,
+  currentTweets_selected
+)
+
+removePattern <- "^RT|Donald|Trump|election"
+
+currentTweetsAll <- currentTweetsAll[!grepl(removePattern, currentTweetsAll$text),]
 
 
 currentTweets <-
