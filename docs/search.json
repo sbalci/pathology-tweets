@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Pathology Tweets",
+    "section": "",
+    "text": "WIP"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About and Development",
@@ -21,17 +28,10 @@
     "text": "TAGS\n\nhttps://tags.hawksey.info/get-tags/\nhttps://drive.google.com/drive/folders/1tAQ3yWgpV6Syg6p-Ns4E0VHHf16kgirT"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Pathology Tweets",
-    "section": "",
-    "text": "WIP"
-  },
-  {
     "objectID": "list.html",
     "href": "list.html",
     "title": "List of Pages",
     "section": "",
-    "text": "currentTweets20220914020153.html\n\ncurrentTweets20220914190450.html\n\ncurrentTweets20220914190838.html\n\ncurrentTweets20220917170928.html\n\ncurrentTweets20220917173350.html\n\ncurrentTweets20220917191858.html\n\ncurrentTweets20220917194217.html\n\ncurrentTweets20220918211640.html\n\ncurrentTweets20220918230553.html\n\ncurrentTweets20220919180019.html\n\ncurrentTweets20220920175740.html\n\ncurrentTweets20220921175809.html\n\ncurrentTweets20220922175544.html"
+    "text": "currentTweets20220914020153.html\n\ncurrentTweets20220914190450.html\n\ncurrentTweets20220914190838.html\n\ncurrentTweets20220917170928.html\n\ncurrentTweets20220917173350.html\n\ncurrentTweets20220917191858.html\n\ncurrentTweets20220917194217.html\n\ncurrentTweets20220918211640.html\n\ncurrentTweets20220918230553.html\n\ncurrentTweets20220919180019.html\n\ncurrentTweets20220920175740.html\n\ncurrentTweets20220921175809.html\n\ncurrentTweets20220922175544.html\n\ncurrentTweets20220923175719.html"
   }
 ]
